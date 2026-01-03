@@ -1,0 +1,27 @@
+.login-page {
+    background: url('./images/login.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.login-container {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+button{
+    margin-top: 5px;
+    color: white;
+    background-color: red;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    
+}

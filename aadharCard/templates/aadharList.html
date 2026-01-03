@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+{% block 'content' %}
+{% load static %}
+
+<div class="p-4">
+   <table class="mt-2 ms-2 me-2 table table-primary table-striped ">
+        <thead>
+            <th>AadharNumber</th>
+            <th>FullName</th>
+            <th>PhoneNumber</th>
+            <th>Date_Of_Birth</th>
+            <th>Gender</th>
+            <th>Address</th>
+            <th>Email</th>
+            <th>Image</th>
+            <th>Created_at</th>
+            <th>Methods</th>
+        </thead> 
+        <tbody class="table-light">
+            {% for Aadhar in list %}
+                <tr>
+                    <td>{{Aadhar.AadharNumber}}</td>
+                    <td>{{Aadhar.FullName}}</td>
+                    <td>{{Aadhar.PhoneNumber}}</td>
+                    <td>{{Aadhar.Date_Of_Birth}}</td>
+                    <td>{{Aadhar.Gender}}</td>
+                    <td>{{Aadhar.Address}}</td>
+                    <td>{{Aadhar.Email}}</td>
+                    <td>
+                        {% if Aadhar.Image %}
+                            <img src="{{ Aadhar.Image.url }}" alt="Aadhar Image" width="50px" height="50px">
+                        {% else %}
+                            <img src="{% static 'images/' %}" alt="Default Image" width="50px" height="50px">
+                        {% endif %}
+                       
+                    </td>
+                    <td>{{Aadhar.Created_at}}</td>
+                    
+
+
+                    <td>
+                        <div class="d-flex align-items-center justify-content-center">
+                            <form action="{% url 'updateForm' Aadhar.id %}" method="GET">
+                                <button class="btn btn-outline-success me-2">Edit</button>
+                            </form>    
+                            <form action="{% url 'delete' Aadhar.id %}" method="POST">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </div>
+                    </td>   
+                </tr>     
+            {% endfor %}    
+        </tbody>    
+    </table>        
+</div>             
+
+<div class="d-flex align-items-center justify-content-center">
+    <button type="button" class="btn btn-outline-danger">Submit</button>
+</div>    
+
+{% endblock %}
